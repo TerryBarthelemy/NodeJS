@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <div id="container"> 
+        <h1>Enter Employee:</h1>
+        <nav>
+            <a href="view.html">View Employee</a>
+            <a href="delete.html">Delete Employee</a>
+            <a href="update.html">Update Employee</a>
+        </nav>
+            <form action="/saveEmplEntry" method="post">
+                <span id="error" style="color: red;"></span>
+                <br>
+                <label for="fname">First Name: </label>
+                <br>
+                <input type="text" name="fname" id="fname">
+                <br>
+                <label for="lname">Last Name: </label>
+                <br>
+                <input type="text" name="lname" id="lname">
+                <br>
+                <label for="department">Department: </label>
+                <br>
+                <input type="text" name="department" id="department">
+                <br>
+                <label for="startDate">Start Date: </label>
+                <br>
+                <input type="text" name="startDate" id="startDate">
+                <br>
+                <label for="jobTitle">Position: </label>
+                <br>
+                <input type="text" name="jobTitle" id="jobTitle">
+                <br>
+                <label for="salary">Salary: </label>
+                <br>
+                <input type="text" name="salary" id="salary"><br>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+    </div>
+</body>
+</html>

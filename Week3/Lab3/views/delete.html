@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='container'>
+    <h1>Delete Employees:</h1>
+    <nav>
+        <a href="index.html">Enter Employee</a>
+        <a href="view.html">View Employee</a>
+        <a href="update.html">Update Employee</a>
+    </nav>
+    <script>
+        fetch('/getData').then( (employees) => {
+            employees.json().then( (theEmployees) =>{
+                for(let employee of theEmployees.employee){
+                    let element = document.createElement('p')
+                    element.innerHTML = element.innerHTML = employee.fname + " " +  employee.lname + " " +  employee.department + " " +  employee.startDate + " " +  employee.jobTitle + " " +  employee.salary
+                    document.getElementById('container').append(element)
+                    //Add delete button
+                    let deleteButton = document.createElement('button')
+                    deleteButton.innerText = 'Delete Entry'
+                    deleteButton.addEventListener('click', function deleteEmpl(){
+                        location.reload()
+                        fetch('deleteEmpl', {
+                            method:'POST',
+                            headers:{
+                                'Content-type':'application/json'
+                            },
+                            body:JSON.stringify({
+                                _id:employee._id,
+                                employee:employee.employee
+                            })
+                        })
+                    })
+                    element.appendChild(deleteButton)
+                }
+            })
+        })
+    </script>
+    </div>
+</body>
+</html>

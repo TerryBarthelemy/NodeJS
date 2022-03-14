@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='container'>
+    <h1>View Employees:</h1>
+    <nav>
+        <a href="index.html">Enter Employee</a>
+        <a href="delete.html">Delete Employee</a>
+        <a href="update.html">Update Employee</a>
+    </nav>
+    <script>
+        fetch('/getData').then( (employees) => {
+            employees.json().then( (theEmployees) =>{
+                for(let employee of theEmployees.employee){
+                    let element = document.createElement('p')
+                    element.innerHTML = employee.fname + " " +  employee.lname + " " +  employee.department + " " +  employee.startDate + " " +  employee.jobTitle + " " +  employee.salary
+                    document.getElementById('container').append(element)
+                }
+            })
+        })
+    </script>
+    </div>
+</body>
+</html>

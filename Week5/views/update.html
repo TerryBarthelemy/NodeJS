@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Employee</title>
+</head>
+<body>
+    <h1>Update Employees:</h1>
+    <nav>
+        <a href="index.html">Enter Employee</a>
+        <a href="view.html">View Employee</a>
+        <a href="update.html">Update Employee</a>
+    </nav>
+    <br>
+    <div id="container">
+
+    </div>
+    <table class="table table-striped" id="tb">
+     <thead>
+         <tr>
+        </tr>
+     </thead>
+    </table>
+   
+    <script>
+        fetch('/getData').then((employee)=> {
+            employee.json().then((theemployees) => {
+                console.log(theemployees)
+                for(let employee of theemployees.employee){
+                    var table = document.querySelector("table");
+                    var tds = ""
+                    var element = document.createElement('p')
+
+                    tds += "<tr>"
+                    tds += "<td>" + employee.fname + "</td>"
+                    tds += "<td>" + employee.lname + "</td>"
+                    tds += "<td>" + employee.department + "</td>"
+                    tds += "<td>" + employee.startDate + "</td>"
+                    tds += "<td>" + employee.jobTitle + "</td>"
+                    tds += "<td>" + employee.salary + "</td>"
+                    tds += "<td id='td.toinsert'>" + "</td>"
+                    tds += "<td id='update'>" + "</td>"
+                    tds += "</tr>"
+
+                    table.innerHTML = tds
+
+                    var updateBtn = document.createElement('button')
+                    updateBtn.innerText = "Update Entry"
+                    updateBtn.className = "btn btn-success"
+                    updateBtn.addEventListener('click', function updateEmployee(){
+                       fetch('/updateID',{
+                            method: 'POST',
+                            headers : {
+                                'Content-Type' : 'application/json'
+                            },
+                            body:JSON.stringify({
+                                _id:employee._id
+                            })
+                        })
+                      location.replace('updateForm.html')
+                    })
+                   var updateTd = document.getElementById('update')
+                   updateTd.appendChild(updateBtn)
+                }
+            })
+        })
+
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee</title>
+</head>
+<body>
+    <h1>Update Form:</h1>
+    <nav>
+        <a href="index.html">Enter Employee</a>
+        <a href="view.html">View Employee</a>
+        <a href="update.html">Update Employee</a>
+        <a href="delete.html">Delete Employee</a>
+    </nav>
+    <div>
+        <form action="/updateEmpl" method="post">
+            <span id="error" style="color: red;"></span>
+            <br>
+            <label for="fname">First Name: </label>
+            <br>
+            <input type="text" name="fname" id="fname">
+            <br>
+            <label for="lname">Last Name: </label>
+            <br>
+            <input type="text" name="lname" id="lname">
+            <br>
+            <label for="department">Department: </label>
+            <br>
+            <input type="text" name="department" id="department">
+            <br>
+            <label for="startDate">Start Date: </label>
+            <br>
+            <input type="text" name="startDate" id="startDate">
+            <br>
+            <label for="jobTitle">Position: </label>
+            <br>
+            <input type="text" name="jobTitle" id="jobTitle">
+            <br>
+            <label for="salary">Salary: </label>
+            <br>
+            <input type="text" name="salary" id="salary"><br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
